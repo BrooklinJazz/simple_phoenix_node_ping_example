@@ -1,0 +1,40 @@
+# Untitled notebook
+
+```elixir
+Mix.install([
+  {:httpoison, "~> 1.8"}
+])
+```
+
+## API
+
+In our Vue Code
+
+<!-- livebook:{"break_markdown":true} -->
+
+### HTTP
+
+```mermaid
+
+flowchart LR
+
+Client --request--> Server
+Server --response--> Client
+```
+
+```mermaid
+flowchart
+Client --> Port3000
+Server --> Port4000
+
+Port3000 --> ping[get api/ping] --> Port4000
+Port4000 --> respond[respond json] --> Port3000
+```
+
+```elixir
+response = HTTPoison.get("localhost:5000/api/ping")
+```
+
+```elixir
+{:ok, %HTTPoison.Response{}} = response
+```
